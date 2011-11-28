@@ -1,0 +1,6 @@
+
+robdd is an implementation of Reduced Ordered Binary Decision Diagrams
+
+Motivation, operations, and implementation details are derived from 
+"Principles of Embedded Computation (c) Rajeev Alur"
+
