@@ -8,6 +8,9 @@ module NeList where
 -- indicate whether they are empty. The head function then is 
 -- defined only for nonempty lists.
 
+-- Developed as class notes for Advanced Programming, Fall 2011
+-- at The University of Pennsylvania
+
 data Empty
 data NonEmpty
 
@@ -35,6 +38,16 @@ instance Show (List Empty a) where
 instance Show a => Show (List NonEmpty a) where
   show xs = '[' : showHelper ", " "]" xs
 
+instance Ord a => Ord (List NonEmpty a) where
+  (Cons x1 xs1) `compare` (Cons x2 xs2) = case x1 `compare` x2 of
+    LT -> LT
+    GT -> GT
+    EQ -> case (xs1, xs2) of
+      (Nil, Nil)               -> EQ
+      (Nil, (Cons _ _))        -> LT
+      ((Cons _ _), Nil)        -> GT
+      ((Cons _ _), (Cons _ _)) -> xs1 `compare` xs2
+
 showHelper :: Show a => String -> String -> List NonEmpty a -> String
 showHelper _ term   (Cons x Nil) = show x ++ term
 showHelper sperse term (Cons x xs'@(Cons _ _)) = 
@@ -50,7 +63,7 @@ netail (Cons _ Nil) = Left Nil
 netail (Cons _ xs@(Cons _ _)) = Right xs
 
 necons :: a -> 
-          Either (List Empty a) (List NonEmpty a) 
+          Either (List Empty a) (List NonEmpty a)          
           -> List NonEmpty a
 necons a (Left Nil) = Cons a Nil
 necons a (Right xs) = Cons a xs
