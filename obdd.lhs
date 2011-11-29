@@ -8,7 +8,7 @@ This section defines the implementation for ordered binary decision diagrams.
 > import Data.Maybe
 
 > import Formula
-> import Shannon
+> -- import Shannon
 
 We have defined boolean variables in the module Formula; their definition
 is copied here. Their implementation explicitly requires a total ordering 
