@@ -1,7 +1,8 @@
 
 > {-# OPTIONS_GHC -Wall #-}
 
-> module Formula where
+> module Formula
+> where
 
 > import Data.Map (Map)
 > import qualified Data.Map as M

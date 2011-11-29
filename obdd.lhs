@@ -7,7 +7,7 @@ This section defines the implementation for ordered binary decision diagrams.
 
 > import Data.Maybe
 
-> import Formula
+> import Formula (Formula (TM_T, TM_F), minLabel, substLeft, substRight)
 > -- import Shannon
 
 We have defined boolean variables in the module Formula; their definition
