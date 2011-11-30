@@ -197,7 +197,7 @@ either True or False, depending on the argument.
 > subst l b (TM_Disj f f')    = TM_Disj (subst l b f) (subst l b f')
 
 > subst l b (TM_Exst v@(V l') f) = if l == l'
->                            then undefined
+>                            then (subst l b f)
 >                            else TM_Exst v (subst l b f)
 
 Next, simplify removes all boolean value terms and reduces conjunctions
